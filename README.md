@@ -11,7 +11,6 @@ Requirements
 Python 3.x
 Linux system with systemd
 
--------
 
 
 ## Usage
@@ -41,13 +40,11 @@ Security and Privacy
 
 This script only collects system metrics and does not transmit data externally.
 
---
 
 ## Contributing
 
 Contributions are welcome! Please submit issues or pull requests for bug fixes and feature enhancements.
 
---
 
 ## License
 
