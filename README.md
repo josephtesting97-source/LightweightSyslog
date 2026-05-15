@@ -16,6 +16,8 @@ Linux system with systemd
 
 ## Usage
 
+Run the release to avoid installing dependencies
+
 Usage Examples
 
 Run locally and log to file only:
