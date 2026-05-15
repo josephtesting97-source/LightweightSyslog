@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import sys
 import time
@@ -15,18 +16,22 @@ SYSTEMD_USER_DIR = os.path.join(USER_HOME, ".config/systemd/user")
 SERVICE_FILE = os.path.join(SYSTEMD_USER_DIR, f"{SERVICE_NAME}.service")
 
 
-def setup_systemd_service():
-    """Create and enable a user-level systemd service."""
+def setup_systemd_service(server_url=None):
+    """Create and enable a user-level systemd service with optional server URL."""
     os.makedirs(SYSTEMD_USER_DIR, exist_ok=True)
+
+    exec_cmd = SCRIPT_PATH
+    if server_url:
+        exec_cmd += f" --server {server_url}"
 
     service_content = textwrap.dedent(f"""
     [Unit]
-    Description=My 60-Second Linux Logging Script
+    Description=Linux System Logger
     After=network.target
 
     [Service]
     Type=simple
-    ExecStart={SCRIPT_PATH}
+    ExecStart={exec_cmd}
     Restart=always
     RestartSec=10
 
@@ -85,7 +90,7 @@ def main():
     args = parser.parse_args()
 
     if args.setup_service:
-        setup_systemd_service()
+        setup_systemd_service(server_url=args.server)
 
     while True:
         log_metrics(server_url=args.server)
