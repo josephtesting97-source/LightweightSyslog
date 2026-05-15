@@ -15,9 +15,27 @@ Linux system with systemd
 
 ## Usage
 
-Run the script:
+Usage Examples
+Run locally and log to file only:
 
-./ syslogger
+
+```python3 logger.py```
+
+
+Send logs to a server while running:
+
+
+```python3 logger.py --server http://example.com/log-receiver```
+
+
+Setup systemd service for automatic logging:
+
+
+```python3 logger.py --setup-service```
+
+You can also combine server logging with systemd setup:
+
+```python3 logger.py --setup-service --server http://example.com/log-receiver```
 
 ## Features
 The script will:
