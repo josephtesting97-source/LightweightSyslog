@@ -1,14 +1,15 @@
 # LightweightSyslog
 
-A lightweight Python script that logs basic system metrics on Linux at regular intervals and optionally runs as a user-level systemd service.
+A lightweight tool that logs basic system metrics on Linux at regular intervals and optionally runs as a user-level systemd service.
 
 Features
 Logs system uptime, CPU usage, and memory usage.
 Writes logs to ~/myscript.log.
 Can run continuously as a user-level systemd service.
 Self-contained and easy to set up.
-Requirements
-Python 3.x
+
+## Requirements
+
 Linux system with systemd
 
 
@@ -20,34 +21,33 @@ Usage Examples
 Run locally and log to file only:
 
 
-```python3 logger.py```
+```./syslog```
 
 
 Send logs to a server while running:
 
 
-```python3 logger.py --server http://example.com/log-receiver```
+```./syslog --server http://example.com/log-receiver```
 
 
 Setup systemd service for automatic logging:
 
 
-```python3 logger.py --setup-service```
+```./syslog --setup-service```
 
 You can also combine server logging with systemd setup:
 
-```python3 logger.py --setup-service --server http://example.com/log-receiver```
+```./syslog --setup-service --server http://example.com/log-receiver```
 
 ## Features
-The script will:
+The tool will:
 
 Create a systemd user service at ~/.config/systemd/user/loggerpy.service.
 Enable and start the service, which ensures the logger runs automatically on login.
 Log system uptime, CPU, and memory usage to ~/myscript.log.
-Running Manually
-python3 logger.py
 
-Logs will appear in the console and in ~/myscript.log.
+
+Logs in ~/myscript.log.
 
 Running as a systemd Service
 
@@ -55,9 +55,9 @@ The script automatically sets up a user-level systemd service:
 
 ~/.config/systemd/user/loggerpy.service
 
-Security and Privacy
+## Security and Privacy
 
-This script only collects system metrics and does not transmit data externally.
+This script only collects system metrics and only transmits data externally when the user requests it to a user selected location.
 
 
 ## Contributing
